@@ -31,6 +31,7 @@ http://localhost:5000
 ### Caching Layers
 - If the key is in InMemory Cache then return the value
 - If the key is not in InMemory Cache then ask Redis to value
+- If the value has changed on Redis cache then publish a message to all subscribers to update inMemory Cache
 - If the key is not in InMemory nor Redis and there is no function delegate to fill values then return null
 - If the value is not in Redis Cache and there is a delegate function then execute external call to fill the value. Then update the redis and send a message to the all subscribers to update their values.When the subscribers got their values then update inmemory cache with that value
 
